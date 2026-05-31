@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-primary: #F8F4EE;
+  --bg-surface: #FFFDF9;
+  --accent: #C86432;
+  --accent-hover: #B45328;
+  --text-primary: #3A2418;
+  --text-secondary: #6B5B52;
+  --border: #E8D8CA;
+  --token-bg: #1D1A17;
+  --token-surface: #28221E;
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Remove default browser focus styles for select */
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* For Firefox */
+select:-moz-focusring {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* For Chrome/Safari on Windows */
+select:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+::selection {
+  background: rgba(200, 100, 50, 0.2);
+  color: var(--text-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c4b0a0;
+}
+
+/* Entrance animations - always start from hidden state */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes token-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Use animation-fill-mode: backwards to apply "from" state during delay */
+.animate-slide-up {
+  animation: slide-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.animate-slide-up-delay-1 {
+  animation: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+}
+
+.animate-slide-up-delay-2 {
+  animation: slide-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease backwards;
+}
+
+.animate-token-appear {
+  animation: token-appear 0.22s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
